@@ -19,7 +19,7 @@
     });
 
     $app->post("/new_car", function() use ($app){
-        $newCar = new Car($_POST['make_model'], $_POST['asking_price'], $_POST['mileage'], NULL);
+        $newCar = new Car($_POST['make_model'], $_POST['asking_price'], $_POST['mileage'], $_POST['car_image']);
         $newCar->saveCar();
 
         return $app['twig']->render('new_car.html.twig', array('postCar' => $newCar));
@@ -28,12 +28,11 @@
 
     $app->post("/view_cars", function() use ($app) {
         $cars = $_SESSION['list_of_cars'];
-        $porsche = new Car("2014 Porsche 911", 114991, 7864, "img/911.jpg");
-        $ford = new Car("2011 Ford F450", 55995, 14241, "img/f450.jpg");
-        $lexus = new Car("2013 Lexus RX 350", 44700, 20000, "img/rx350.jpg");
-        $mercedes = new Car("Mercedes Benz CLS550", 39900, 37979, "img/cls550.jpg");
-        array_push($cars, $lexus);
-
+        // $porsche = new Car("2014 Porsche 911", 114991, 7864, "img/911.jpg");
+        // $ford = new Car("2011 Ford F450", 55995, 14241, "img/f450.jpg");
+        // $lexus = new Car("2013 Lexus RX 350", 44700, 20000, "img/rx350.jpg");
+        // $mercedes = new Car("Mercedes Benz CLS550", 39900, 37979, "img/cls550.jpg");
+        // array_push($cars, $lexus);
 
         $cars_matching_search = array();
         foreach ($cars as $car) {
@@ -44,6 +43,11 @@
 
         return $app['twig']->render('view_cars.html.twig', array('cars' => $cars_matching_search));
     });
+
+        $app->post('/delete_cars', function() use ($app){
+            Car::deleteAll();
+            return $app['twig']->render('home_page.html.twig');
+        });
 
     return $app;
 ?>

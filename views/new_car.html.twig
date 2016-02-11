@@ -2,13 +2,15 @@
 <html>
     <head>
         <meta charset="utf-8">
+        <link href="css/styles.css" rel="stylesheet" type="text/css">
         <title>New Car</title>
     </head>
     <body>
         <h1>You created a new car posting!</h1>
         <p>{{ postCar.getMakeModel }}</p>
         <p>{{ postCar.getPrice }}</p>
-        <p>{{ postCar.Mileage }}</p>
+        <p>{{ postCar.getMileage }}</p>
+        <img src="{{ postCar.getImage }}">
 
         <a href="/">Home</a>
     </body>

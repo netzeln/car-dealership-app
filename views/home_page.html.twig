@@ -2,6 +2,7 @@
 <html>
 <head>
     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css' integrity='sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7' crossorigin='anonymous'>
+    <link href="css/styles.css" rel="stylesheet" type="text/css">
     <title>Find A Car</title>
 </head>
 <body>
@@ -15,6 +16,8 @@
                 <input id='mileage' name='mileage' class='form-control' type='number'>
                 <label for='asking_price'>What is your Asking Price?:</label>
                 <input id='asking_price' name='asking_price' class='form-control' type='number'>
+                <label for='car_image'>Enter URL image:</label>
+                <input id='car_image' name='car_image' class='form-control' type='text'>
             </div>
 
             <button type='submit' class='btn-success'>Submit</button>
@@ -31,6 +34,9 @@
                 <input id='mileage' name='mileage' class='form-control' type='number'>
             </div>
             <button type='submit' class='btn-success'>Submit</button>
+        </form>
+        <form action="/delete_cars" method='post'>
+            <button type='submit' class='btn-danger'>Delete all cars</button>
         </form>
     </div>
 </body>

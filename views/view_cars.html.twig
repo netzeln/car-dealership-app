@@ -9,14 +9,16 @@
         {% if cars is not empty %}
             {% for car in cars %}
                <img src='{{car.getImage}}'>
-                            <p> {{ car.getMakeModel }} </p>
+                            <p> <strong>{{ car.getMakeModel }}</strong> </p>
                             <ul>
                                 <li>${{car.getPrice}} </li>
                                 <li>{{car.getMileage}}</li>
                             </ul>
             {% endfor %}
         {% endif %}
+        {% if cars is empty %}
+                <h1>There are no cars in your Price and Mileage range. Cheapskate.</h1>
 
-        <h1>There are no cars to show</h1>";
+        {% endif %}
     </body>
  </html>

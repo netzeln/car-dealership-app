@@ -27,23 +27,22 @@
     });
 
     $app->post("/view_cars", function() use ($app) {
-
-        // $porsche = new Car("2014 Porsche 911", 114991, 7864, "img/911.jpg");
-        // $ford = new Car("2011 Ford F450", 55995, 14241, "img/f450.jpg");
-        // $lexus = new Car("2013 Lexus RX 350", 44700, 20000, "img/rx350.jpg");
-        // $mercedes = new Car("Mercedes Benz CLS550", 39900, 37979, "img/cls550.jpg");
-        //
-        // $cars = array($porsche, $ford, $lexus, $mercedes);
-        // $cars_matching_search = array();
-        // foreach ($cars as $car) {
-        //     if ($car->worthBuying($_POST["price"], $_POST["mileage"])) {
-        //         array_push($cars_matching_search, $car);
-        //     }
-        // }
+        $cars = $_SESSION['list_of_cars'];
+        $porsche = new Car("2014 Porsche 911", 114991, 7864, "img/911.jpg");
+        $ford = new Car("2011 Ford F450", 55995, 14241, "img/f450.jpg");
+        $lexus = new Car("2013 Lexus RX 350", 44700, 20000, "img/rx350.jpg");
+        $mercedes = new Car("Mercedes Benz CLS550", 39900, 37979, "img/cls550.jpg");
+        array_push($cars, $lexus);
 
 
+        $cars_matching_search = array();
+        foreach ($cars as $car) {
+            if ($car->worthBuying($_POST["price"], $_POST["mileage"])) {
+                array_push($cars_matching_search, $car);
+            }
+        }
 
-        return $app['twig']->render('view_cars.html.twig');
+        return $app['twig']->render('view_cars.html.twig', array('cars' => $cars_matching_search));
     });
 
     return $app;

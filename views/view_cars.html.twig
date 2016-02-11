@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Cars For Sale</title>
+    </head>
+    <body>
+        <h1>CARS FOR SALE</h1>
+
+        {% if cars is not empty %}
+            {% for car in cars %}
+               <img src='{{car.getImage}}'>
+                            <p> {{ car.getMakeModel }} </p>
+                            <ul>
+                                <li>${{car.getPrice}} </li>
+                                <li>{{car.getMileage}}</li>
+                            </ul>
+            {% endfor %}
+        {% endif %}
+
+        <h1>There are no cars to show</h1>";
+    </body>
+ </html>
